@@ -9,15 +9,10 @@ class NegociacaoController {
 
   adiciona(event) {
     event.preventDefault();
-
-    let data = new Date(
-      ...this._inputData.value
-        .split('-')
-        .map((item, i) => item - i % 2)
-    );
+    let dateHelper = new DateHelper();
 
     let negociacao = new Negociacao(
-      data,
+      dateHelper.textoParaData(this._inputData.value),
       this._inputQuantidade.value,
       this._inputValor.value
     );
